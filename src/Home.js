@@ -1,9 +1,29 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 
 const Home = () => {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const showNav = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
   return (
     <div>
+      <div className="mobile-div-logo">
+        <img src="/images/Frame 1.png" alt="logo" />
+        <img
+          src="/images/GridFill.png"
+          alt="grid"
+          style={{
+            backgroundColor: "#9747FF",
+            padding: "8px",
+            borderRadius: "8px",
+          }}
+          onClick={showNav}
+        />
+      </div>
       <nav>
         <div className="nav-items">
           <img src="/images/Frame 1.png" alt="logo" />
@@ -26,7 +46,7 @@ const Home = () => {
           </div>
           <p>Pricing</p>
         </div>
-        <div>
+        <div className="login-signup-btns">
           <a href="/login">
             <button className="home-login-btn">Log in</button>
           </a>
@@ -35,12 +55,30 @@ const Home = () => {
           </a>
         </div>
       </nav>
+      {toggleMenu && (
+        <div className="div-for-mobile">
+          <ul>
+            <a href="/login" className="mobile-nav-login">
+              <li className="mobile-nav-login">Log in</li>
+            </a>
+            <a href="/signup" className="mobile-nav-signup">
+              <li className="mobile-nav-signup">Sign up</li>
+            </a>
+            <li>Home</li>
+            <li> Products</li>
+            <li>Resources</li>
+            <li>Pricing</li>
+          </ul>
+        </div>
+      )}
       <hr />
-
       <div className="providing">
         <div className="d-flex justify-content-center mt-5">
-          <div>
-            <h1 className="text-center d-flex">
+          <h1 id="break-providing-text">
+            Providing <span>Optimal</span> Customer Service
+          </h1>
+          <div className="animated-prov-text">
+            <h1 className="text-center d-flex ">
               Providing
               <div className="mx-2 text_change">
                 <span className="mb-2">Optimal</span>
@@ -106,8 +144,9 @@ const Home = () => {
       </div>
       <div className="logos-div">
         <div>
-          <p className="partners">Partners</p>
+          {/* <p className="partners">Partners</p> */}
           <div className="logoss">
+            <p className="partners">Partners</p>
             <img
               src="/images/Frame 1000005532.png"
               alt="google"
@@ -154,19 +193,19 @@ const Home = () => {
           <div className="standard-plan">
             <h3>Standard plan</h3>
             <hr className="plans-horizoltal-rule" />
-            <img src="/images/Price.png" alt="price" /> <br />
+            <img src="/images/Price.png" alt="price" id="plan-price" /> <br />
             <button>Get Started</button>
             <hr className="plans-horizoltal-rule" />
-            <img src="/images/List.png" alt="list" />
+            <img src="/images/List.png" alt="list" id="plan-img" />
           </div>
           <div className="standard-plan">
             <h3>Premium plan</h3>
             <hr className="plans-horizoltal-rule" />
-            <img src="/images/Price (1).png" alt="price" />
+            <img src="/images/Price (1).png" alt="price" id="plan-price" />
             <br />
             <button>Get Started</button>
             <hr className="plans-horizoltal-rule" />
-            <img src="/images/List (1).png" alt="list" />
+            <img src="/images/List (1).png" alt="list" id="plan-img" />
           </div>
         </div>
       </div>
@@ -259,7 +298,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       <div className="blog-posts">
         <div className="overlap">
           <div className="rectangle"></div>
@@ -367,7 +405,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       <hr className="hr-before-start-journey" />
       <div className="start-journey-div">
         <div className="start-journey">
